@@ -1,0 +1,319 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti 🌻💛</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff4b0, #ffd84d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 650px;
+            padding: 45px 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .flor {
+            font-size: 80px;
+            animation: flotar 2s infinite ease-in-out;
+        }
+
+        h1 {
+            margin-top: 15px;
+            color: #d99a00;
+            font-size: 40px;
+        }
+
+        p {
+            margin-top: 15px;
+            color: #665000;
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        button {
+            margin: 15px 8px;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #botonSi {
+            background: #ffc400;
+            color: #5c4300;
+        }
+
+        #botonNo {
+            background: #eeeeee;
+            color: #555;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        #sorpresa {
+            display: none;
+        }
+
+        #pregunta {
+            margin-top: 30px;
+        }
+
+        .ramo {
+            font-size: 55px;
+            margin: 20px 0;
+        }
+
+        .corazones {
+            font-size: 35px;
+            margin-top: 20px;
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .flor {
+                font-size: 65px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <!-- PRIMERA PARTE -->
+
+        <div id="inicio">
+
+            <div class="flor">🌻</div>
+
+            <h1>Tengo algo para ti 💛</h1>
+
+            <p>
+                Hay una pequeña sorpresa esperándote...
+            </p>
+
+            <button id="abrir" onclick="mostrarPregunta()">
+                Abrir sorpresa 💌
+            </button>
+
+        </div>
+
+
+        <!-- PREGUNTA -->
+
+        <div id="pregunta" style="display: none;">
+
+            <div class="flor">🌻</div>
+
+            <h1 id="textoPregunta">
+                ¿Me quieres? 🥺💛
+            </h1>
+
+            <p id="mensajePregunta">
+                Piénsalo bien... 👀
+            </p>
+
+            <button id="botonSi" onclick="dijoQueSi()">
+                Sí 💛
+            </button>
+
+            <button id="botonNo" onclick="dijoQueNo()">
+                No 😢
+            </button>
+
+        </div>
+
+
+        <!-- SORPRESA FINAL -->
+
+        <div id="sorpresa">
+
+            <div class="ramo">
+                🌻 🌻 🌻 🌻 🌻
+            </div>
+
+            <h1>Sabía que dirías que sí 😌💛</h1>
+
+            <p>
+                Te regalo estas flores amarillas porque
+                quería recordarte lo especial que eres para mí.
+            </p>
+
+            <p>
+                Gracias por cada momento, cada sonrisa
+                y cada recuerdo que hemos creado juntos.
+                ❤️
+            </p>
+
+            <p>
+                Espero que estas flores te saquen una sonrisa
+                tan grande como la que tú me sacas a mí. 🌻
+            </p>
+
+            <div class="corazones">
+                💛 🌻 💛 🌻 💛
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+                        let intentos = 0;
+
+                        function mostrarPregunta() {
+
+                            document.getElementById("inicio").style.display = "none";
+
+                            document.getElementById("pregunta").style.display = "block";
+
+                        }
+
+
+                        function dijoQueNo() {
+
+                            intentos++;
+
+                            const pregunta = document.getElementById("textoPregunta");
+                            const mensaje = document.getElementById("mensajePregunta");
+                            const botonNo = document.getElementById("botonNo");
+
+                            if (intentos === 1) {
+
+                                pregunta.innerHTML = "¿Segura? 🥺";
+                                mensaje.innerHTML = "Piénsalo otra vez... 💛";
+                                botonNo.innerHTML = "No 😭";
+
+                            }
+
+                            else if (intentos === 2) {
+
+                                pregunta.innerHTML = "¿Segurísima? 😭";
+                                mensaje.innerHTML = "Creo que estás equivocada 👀";
+                                botonNo.innerHTML = "Todavía no 😔";
+
+                            }
+
+                            else if (intentos === 3) {
+
+                                pregunta.innerHTML = "¿De verdad no me quieres? 🥺💔";
+                                mensaje.innerHTML = "Última oportunidad...";
+                                botonNo.innerHTML = "No 😭";
+
+                            }
+
+                            else {
+
+                                pregunta.innerHTML = "Piénsalo bien 😌💛";
+                                mensaje.innerHTML = "Solo existe una respuesta correcta 🌻";
+                                botonNo.innerHTML = "No puedo decir que no 😭";
+
+                                // El botón se hace más pequeño
+                                botonNo.style.transform = "scale(0.8)";
+                            }
+                        }
+
+
+                        function dijoQueSi() {
+
+                            document.getElementById("pregunta").style.display = "none";
+
+                            document.getElementById("sorpresa").style.display = "block";
+
+                            crearFlores();
+
+                        }
+
+
+                        function crearFlores() {
+
+                            for (let i = 0; i < 20; i++) {
+
+                                setTimeout(() => {
+
+                                    const flor = document.createElement("div");
+
+                                    flor.innerHTML = "🌻";
+
+                                    flor.style.position = "fixed";
+                                    flor.style.left = Math.random() * 100 + "vw";
+                                    flor.style.top = "-50px";
+                                    flor.style.fontSize = (20 + Math.random() * 30) + "px";
+                                    flor.style.zIndex = "10";
+                                    flor.style.transition = "transform 5s linear, opacity 5s";
+
+                                    document.body.appendChild(flor);
+
+                                    setTimeout(() => {
+
+                                        flor.style.transform =
+                                            "translateY(110vh) rotate(360deg)";
+
+                                        flor.style.opacity = "0";
+
+                                    }, 100);
+
+                                    setTimeout(() => {
+
+                                        flor.remove();
+
+                                    }, 5500);
+
+                                }, i * 150);
+
+                            }
+
+                        }
+
+    </script>
+
+</body>
+</html>
+```
